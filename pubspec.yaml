@@ -41,6 +41,9 @@ dependencies:
   url_launcher: ^6.2.4
   flutter_inappwebview: ^6.0.0
   webview_flutter: ^3.0.4
+  cryptography: ^2.7.0
+  get: ^4.7.2
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:

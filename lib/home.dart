@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:atomapp/paymentcontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'web_view_container.dart';
 import 'atom_pay_helper.dart';
 import 'package:http/http.dart' as http;
@@ -55,6 +57,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GetxTapController gcontroller = Get.put(GetxTapController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('NDPS Sample App'),
@@ -64,8 +67,17 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => _initNdpsPayment(
-                  context, responseHashKey, responseDecryptionKey),
+              onPressed: () => gcontroller.initNdpsPayment(
+                email: "assa@gmail.com",
+                number: "3214234356",
+                transId: gcontroller.generateRandomString(12),
+                context: context,
+                responseHashKey: gcontroller.responseHashKey,
+                responseDecryptionKey: gcontroller.responseDecryptionKey,
+                amount: "100",
+                address: 'fsdfsdf',
+                name: 'amarjit',
+              ),
               child: const Text('Open'),
             ),
           ],
